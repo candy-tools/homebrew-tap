@@ -1,50 +1,51 @@
 # Candy Tools — Homebrew Tap
 
-Homebrew tap for the Candy Tools command-line utilities. Add this tap once and
-install any of our tools with `brew`.
+The Homebrew home for Candy Tools, our small collection of command-line
+utilities. Tap it once and every tool we ship is just a `brew install` away.
 
 ## Install
 
+Add the tap, trust it, then install whatever you need:
+
 ```sh
 brew tap candy-tools/tap
-brew install <tool>
+brew trust candy-tools/tap
+brew install todo
 ```
 
-Or without tapping first:
+Prefer to install directly? Using the full name trusts that one tool for you,
+so there's no separate trust step:
 
 ```sh
-brew install candy-tools/tap/<tool>
+brew install candy-tools/tap/todo
 ```
 
-Upgrade later with:
+Update to the latest versions anytime with:
 
 ```sh
 brew update && brew upgrade
 ```
 
-## Available tools
+## Why the trust step?
 
-Tools are published to this tap automatically as they are released.
+Since Homebrew 6.0.0, third-party taps like this one aren't trusted by default —
+Homebrew won't run any of their code until you say it's okay. Skip it and you'll
+just get a warning, and nothing from the tap will install.
 
-<!--
-| Tool     | Description |
-| -------- | ----------- |
-| `tool-a` | ...         |
--->
+`brew trust candy-tools/tap` trusts everything we publish here, now and in the
+future. If you'd rather trust one tool at a time, do that instead:
 
-## Notes
+```sh
+brew trust --cask candy-tools/tap/todo
+```
 
-- Tools here are distributed as Homebrew **casks** (prebuilt binaries), which
-  are **macOS only** — Linux `brew` users are not covered by casks.
-- Nothing in this repository is edited by hand: each tool's release pipeline
-  (GoReleaser) commits its generated cask into `Casks/`.
+See what you've trusted with `brew trust`, and undo it anytime with
+`brew untrust candy-tools/tap`.
 
-## For maintainers — how a tool publishes here
+## Tools
 
-Add a `homebrew_casks:` block to **each tool's own repository** in its
-`.goreleaser.yaml` (not to this repo). A ready-to-copy example lives in
-[`examples/example-goreleaser.yaml`](examples/example-goreleaser.yaml).
+| Tool   | Description                                                           |
+| ------ | -------------------------------------------------------------------- |
+| `todo` | Keyboard-driven terminal TODO manager backed by plain Markdown files |
 
-The release workflow needs a GitHub token with **write access to this tap
-repo**, exposed as `HOMEBREW_TAP_GITHUB_TOKEN` — the default `GITHUB_TOKEN` cannot push
-to another repository.
+New tools show up here as we release them.
