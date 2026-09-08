@@ -7,7 +7,7 @@
 #   brew install tool-a
 #
 # The release workflow needs a GitHub token with write access to the tap repo,
-# exposed as TAP_GITHUB_TOKEN (the default GITHUB_TOKEN cannot push to another
+# exposed as HOMEBREW_TAP_GITHUB_TOKEN (the default GITHUB_TOKEN cannot push to another
 # repository).
 
 version: 2
@@ -27,7 +27,7 @@ homebrew_casks:
     repository:
       owner: candy-tools
       name: homebrew-tap
-      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     directory: Casks
     homepage: "https://github.com/candy-tools/tool-a"
     description: "One-line description of tool-a"

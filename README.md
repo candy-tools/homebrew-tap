@@ -46,5 +46,5 @@ Add a `homebrew_casks:` block to **each tool's own repository** in its
 [`examples/example-goreleaser.yaml`](examples/example-goreleaser.yaml).
 
 The release workflow needs a GitHub token with **write access to this tap
-repo**, exposed as `TAP_GITHUB_TOKEN` — the default `GITHUB_TOKEN` cannot push
+repo**, exposed as `HOMEBREW_TAP_GITHUB_TOKEN` — the default `GITHUB_TOKEN` cannot push
 to another repository.
